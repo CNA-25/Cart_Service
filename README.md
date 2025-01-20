@@ -1,5 +1,20 @@
-# Cart_Service
-## Navy SEAL Copypasta
+# rahti2-fastapi 
 
-What the **** did you just ****ing say about me, you little ****? I’ll have you know I graduated top of my class in the Navy SEALs, and I’ve been involved in numerous secret raids on Al-Qaeda, and I have over 300 confirmed kills. I am trained in gorilla warfare and I’m the top sniper in the entire US armed forces. You are nothing to me but just another target. I will wipe you the **** out with precision the likes of which has never been seen before on this Earth, mark my ****ing words. You think you can get away with saying that **** to me over the Internet? Think again, ****er. As we speak, I am contacting my secret network of spies across the USA, and your IP is being traced right now, so you better prepare for the storm, maggot. The storm that wipes out the pathetic little thing you call your life. You’re ****ing dead, kid. I can be anywhere, anytime, and I can kill you in over seven hundred ways, and that’s just with my bare hands. Not only am I extensively trained in unarmed combat, but I have access to the entire arsenal of the United States Marine Corps, and I will use it to its full extent to wipe your miserable ass off the face of the continent, you little ****. If only you could have known what unholy retribution your little “clever” comment was about to bring down upon you, maybe you would have held your ****ing tongue. But you couldn’t, you didn’t, and now you’re paying the price, you goddamn idiot. I will **** fury all over you, and you will drown in it. You’re ****ing dead, kiddo.
+### For deployment to Rahti2
 
+Note: OpenShift wants the main branch to be named *master* by default, you have two options:
+1. Push to origin/master to deploy
+2. Change the setting in Openshift to *main*:    
+    Edit BuildConfig ==> Show advanced git options ==> Git reference: `main`
+
+
+See also: https://fastapi.tiangolo.com/deployment/docker/
+
+
+
+### For local real-time development
+
+Rename `.env-example` to `.env` to override the `MODE=production`set in the `Dockerfile`. Note that this needs a valueless declaration of `MODE` in `docker-compose.yml`
+
+To run the container locally:
+`docker-compose up --build`
