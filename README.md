@@ -42,7 +42,7 @@ This is a simple FastAPI-based cart service that allows users to manage their sh
     pip install -r requirements.txt
     ```
 
-4. Create a [.env](http://_vscodecontentref_/3) file in the root directory with the following content:
+4. Create a `.env` file in the root directory with the following content:
 
     ```env
     MODE=development
@@ -60,7 +60,7 @@ This is a simple FastAPI-based cart service that allows users to manage their sh
 To run the FastAPI application locally, follow these steps:
 
 1. Ensure that PostgreSQL is installed and running on your local machine.
-2. Update the `DATABASE_URL` in the [.env](http://_vscodecontentref_/1) file with your local PostgreSQL credentials.
+2. Update the `DATABASE_URL` in the `.env` file with your local PostgreSQL credentials.
 3. Start the FastAPI application:
 
     ```sh
@@ -92,9 +92,9 @@ The API endpoints can also be viewed and tested using the automatically generate
 - **Method:** `POST`
 - **Description:** Add an item to the user's cart.
 - **Parameters:**
-  - [user_id](http://_vscodecontentref_/4) (int): The ID of the user.
-  - [product_id](http://_vscodecontentref_/5) (int): The ID of the product to add.
-  - [quantity](http://_vscodecontentref_/6) (int, optional): The quantity of the product to add (default is 1).
+  - __user_id__(int): The ID of the user.
+  - __product_id__ (int): The ID of the product to add.
+  - __quantity__ (int, optional): The quantity of the product to add (default is 1).
 
 ### Get User's Cart
 
