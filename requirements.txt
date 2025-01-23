@@ -1,2 +1,20 @@
+# FastAPI framework
 fastapi[standard]
+
+# Data validation
 pydantic
+
+# ASGI server to run FastAPI
+uvicorn[standard]
+
+# Database ORM
+sqlalchemy
+
+# PostgreSQL database adapter
+psycopg2-binary
+
+# Environment variable management
+python-dotenv
+
+# Optional: CORS support if needed
+fastapi-cors

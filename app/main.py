@@ -1,12 +1,12 @@
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 import requests  # For fetching product data from an external API
-from database import SessionLocal, CartItem
+from app.database import SessionLocal, CartItem
 
 app = FastAPI()
 
 # External API URL 
-# PRODUCT_API_URL = ?????????
+# PRODUCT_API_URL = Pruttupong's API URL
 
 beers = [
     {"id": 1, "sku": "BEER001", "name": "Golden Ale", "price": 5.99, "description": "A smooth, golden-hued ale with a crisp finish."},
@@ -29,7 +29,7 @@ def get_db():
     finally:
         db.close()
 
-# Get All Beers (Testing Endpoint)
+# Get All Beers 
 @app.get("/beers/")
 def get_beers():
     return beers
@@ -42,10 +42,10 @@ def get_beer(beer_id: int):
         raise HTTPException(status_code=404, detail="Beer not found")
     return beer
 
-# Add Item to Cart (Using Hardcoded Beer Data)
+# Add Item to Cart 
 @app.post("/cart/")
 def add_to_cart(user_id: int, product_id: int, quantity: int = 1, db: Session = Depends(get_db)):
-    # Check if the product exists in hardcoded data
+    # Check if the product exists
     beer = next((b for b in beers if b["id"] == product_id), None)
     if beer is None:
         raise HTTPException(status_code=404, detail="Product not found")
@@ -63,7 +63,7 @@ def add_to_cart(user_id: int, product_id: int, quantity: int = 1, db: Session = 
     db.refresh(cart_item)
     return {"message": "Item added to cart", "cart_item": cart_item}
 
-# Get User's Cart (With Hardcoded Product Data)
+# Get User's Cart 
 @app.get("/cart/{user_id}")
 def get_cart(user_id: int, db: Session = Depends(get_db)):
     cart_items = db.query(CartItem).filter(CartItem.user_id == user_id).all()
