@@ -25,8 +25,8 @@ This is a simple FastAPI-based cart service that allows users to manage their sh
 1. Clone the repository:
 
     ```sh
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone [<repository-url>](https://github.com/CNA-25/Cart_Service.git)
+    cd Cart_Service
     ```
 
 2. Create and activate a virtual environment:
@@ -127,4 +127,6 @@ The database schema includes a single table [cart_items](./app/database.py) with
 - __user_id__ (Integer): The ID of the user associated with the cart item.
 - __product_id__ (Integer): The ID of the product associated with the cart item.
 - __quantity__ (Integer): The quantity of the product in the cart.
+
+  ## KEK
 
