@@ -20,3 +20,6 @@ python-dotenv
 fastapi-cors
 
 requests
+
+# JWT token support
+python-jose

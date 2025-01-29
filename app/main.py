@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 import requests  # For fetching product data from an external API
 from app.database import SessionLocal, CartItem
+from auth import verify_jwt_token  # Import the verify_jwt_token function
 
 app = FastAPI()
 
@@ -30,12 +31,12 @@ def get_db():
         db.close()
 
 # Get All Beers 
-@app.get("/beers/")
+@app.get("/beers/", dependencies=[Depends(verify_jwt_token)])
 def get_beers():
     return beers
 
 # Get a Specific Beer by ID
-@app.get("/beers/{beer_id}")
+@app.get("/beers/{beer_id}", dependencies=[Depends(verify_jwt_token)])
 def get_beer(beer_id: int):
     beer = next((b for b in beers if b["id"] == beer_id), None)
     if beer is None:
@@ -43,7 +44,7 @@ def get_beer(beer_id: int):
     return beer
 
 # Add Item to Cart 
-@app.post("/cart/")
+@app.post("/cart/", dependencies=[Depends(verify_jwt_token)])
 def add_to_cart(user_id: int, product_id: int, quantity: int = 1, db: Session = Depends(get_db)):
     # Check if the product exists
     beer = next((b for b in beers if b["id"] == product_id), None)
@@ -64,7 +65,7 @@ def add_to_cart(user_id: int, product_id: int, quantity: int = 1, db: Session = 
     return {"message": "Item added to cart", "cart_item": cart_item}
 
 # Get User's Cart 
-@app.get("/cart/{user_id}")
+@app.get("/cart/{user_id}", dependencies=[Depends(verify_jwt_token)])
 def get_cart(user_id: int, db: Session = Depends(get_db)):
     cart_items = db.query(CartItem).filter(CartItem.user_id == user_id).all()
     
@@ -96,7 +97,7 @@ def get_cart(user_id: int, db: Session = Depends(get_db)):
     return {"user_id": user_id, "cart": cart_response}
 
 # Remove Item from Cart
-@app.delete("/cart/{user_id}/{product_id}")
+@app.delete("/cart/{user_id}/{product_id}", dependencies=[Depends(verify_jwt_token)])
 def remove_from_cart(user_id: int, product_id: int, db: Session = Depends(get_db)):
     cart_item = db.query(CartItem).filter(CartItem.user_id == user_id, CartItem.product_id == product_id).first()
 
@@ -108,7 +109,7 @@ def remove_from_cart(user_id: int, product_id: int, db: Session = Depends(get_db
     return {"message": "Item removed from cart"}
 
 # Clear Cart (On Checkout)
-@app.delete("/cart/{user_id}")
+@app.delete("/cart/{user_id}", dependencies=[Depends(verify_jwt_token)])
 def clear_cart(user_id: int, db: Session = Depends(get_db)):
     db.query(CartItem).filter(CartItem.user_id == user_id).delete()
     db.commit()
