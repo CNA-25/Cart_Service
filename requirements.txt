@@ -21,8 +21,5 @@ fastapi-cors
 
 requests
 
-# Local auth.py
-auth
-
 # JWT token support
 python-jose

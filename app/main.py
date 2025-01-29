@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 import requests  # For fetching product data from an external API
 from app.database import SessionLocal, CartItem
-from auth import verify_jwt_token  # Import the verify_jwt_token function
+from app.auth import verify_jwt_token  # Import the verify_jwt_token function
 
 app = FastAPI()
 
