@@ -18,3 +18,5 @@ python-dotenv
 
 # Optional: CORS support if needed
 fastapi-cors
+
+requests
