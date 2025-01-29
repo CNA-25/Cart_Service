@@ -25,7 +25,7 @@ This is a simple FastAPI-based cart service that allows users to manage their sh
 1. Clone the repository:
 
     ```sh
-    git clone [<repository-url>](https://github.com/CNA-25/Cart_Service.git)
+    git clone (https://github.com/CNA-25/Cart_Service.git)
     cd Cart_Service
     ```
 
