@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env file
-DATABASE_URL = f"postgresql://{os.getenv('DBNAME')}:{os.getenv('DBPW')}@postgresql.cart-service.svc.cluster.local/{os.getenv('DBUSER')}"
+DATABASE_URL = f"postgresql://{os.getenv('DBUSER')}:{os.getenv('DBPW')}@postgresql.cart-service.svc.cluster.local/{os.getenv('DBNAME')}"
 
 
 # Database Connection
