@@ -5,8 +5,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()  # Load environment variables from .env file
+DATABASE_URL = f"postgresql://{os.getenv('DBNAME')}:{os.getenv('DBPW')}@postgresql.cart-service.svc.cluster.local/{os.getenv('DBUSER')}"
 
-DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Database Connection
 engine = create_engine(DATABASE_URL)
@@ -20,7 +20,7 @@ class CartItem(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, nullable=False)  # Associate cart items with a user
     product_id = Column(Integer, nullable=False)  # Associate with a product
-    quantity = Column(Integer, default=1)
+    quantity = Column(Integer, default=1) # Quantity of the product in the cart, duh
 
 # Create Tables if they don’t exist
 Base.metadata.create_all(bind=engine)
