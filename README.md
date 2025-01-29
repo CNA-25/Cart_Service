@@ -46,7 +46,12 @@ This is a simple FastAPI-based cart service that allows users to manage their sh
 
     ```env
     MODE=development
-    DATABASE_URL=postgresql://<username>:<password>@<host>/<database>
+    
+    DBNAME='db_name'
+
+    DBPW='db_password'
+
+    DBUSER='db_user'
     ```
 
 5. Run the FastAPI application:
