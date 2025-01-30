@@ -77,7 +77,7 @@ To run the FastAPI application locally, follow these steps:
 
 ## Endpoints
 
-The API endpoints can also be viewed and tested using the automatically generated API documentation at `http://127.0.0.1:8000/docs`.
+The API endpoints can also be viewed and tested using the automatically generated API documentation at `http://127.0.0.1:8000/docs`. or if you want to veiw live you can ask us for the link.
 
 ### Get All Beers
 
