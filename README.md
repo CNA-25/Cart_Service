@@ -33,7 +33,7 @@ This is a simple FastAPI-based cart service that allows users to manage their sh
 
     ```sh
     python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    source venv/bin/activate
     ```
 
 3. Install the dependencies:
