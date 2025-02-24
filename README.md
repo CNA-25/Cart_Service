@@ -52,6 +52,8 @@ This is a simple FastAPI-based cart service that allows users to manage their sh
     DBPW='db_password'
 
     DBUSER='db_user'
+
+    SECRETKEY='your_jwt_secret'
     ```
 
 5. Run the FastAPI application:
