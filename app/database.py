@@ -19,7 +19,7 @@ class CartItem(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, nullable=False)  # Associate cart items with a user
-    product_id = Column(Integer, nullable=False)  # Associate with a product
+    product_id = Column(String, nullable=False)  # Associate with a product
     quantity = Column(Integer, default=1) # Quantity of the product in the cart, duh
 
 # Create Tables if they don’t exist

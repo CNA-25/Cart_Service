@@ -19,7 +19,7 @@ def get_db():
 
 # Add Item to Cart 
 @app.post("/cart/", dependencies=[Depends(verify_jwt_token)])
-def add_to_cart(user_id: int, product_id: int, quantity: int = 1, db: Session = Depends(get_db)):
+def add_to_cart(user_id: int, product_id: str, quantity: int = 1, db: Session = Depends(get_db)):
 
     # Check if the product is already in the cart
     cart_item = db.query(CartItem).filter(CartItem.user_id == user_id, CartItem.product_id == product_id).first()
@@ -36,7 +36,7 @@ def add_to_cart(user_id: int, product_id: int, quantity: int = 1, db: Session = 
 
 # Edit the quantity of a specific items
 @app.patch("/cart/{user_id}/{product_id}/{quantity}", dependencies=[Depends(verify_jwt_token)])
-def edit_item_quantity(user_id: int, product_id: int, quantity_change: int, db: Session = Depends(get_db)):
+def edit_item_quantity(user_id: int, product_id: str, quantity_change: int, db: Session = Depends(get_db)):
     """quantity_change, the amount the quantity changes +/-, e.g. if quantity if 10, quantity is change 3, new quantity is 13, if the change is negative (-3), then 7"""
     cart_item = db.query(CartItem).filter(CartItem.user_id == user_id, CartItem.product_id == product_id).first()
 
@@ -74,7 +74,7 @@ def get_cart(user_id: int, db: Session = Depends(get_db)):
 
 # Remove Item from Cart
 @app.delete("/cart/{user_id}/{product_id}", dependencies=[Depends(verify_jwt_token)])
-def remove_from_cart(user_id: int, product_id: int, db: Session = Depends(get_db)):
+def remove_from_cart(user_id: int, product_id: str, db: Session = Depends(get_db)):
     cart_item = db.query(CartItem).filter(CartItem.user_id == user_id, CartItem.product_id == product_id).first()
 
     if not cart_item:
