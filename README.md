@@ -4,9 +4,8 @@ This is a simple FastAPI-based cart service that allows users to manage their sh
 
 ## Features
 
-- Retrieve a list of available beers
-- Retrieve details of a specific beer
 - Add items to the cart
+- Update quantity of specific item
 - Retrieve items in the user's cart
 - Remove items from the cart
 - Clear the cart
@@ -81,23 +80,20 @@ To run the FastAPI application locally, follow these steps:
 
 The API endpoints can also be viewed and tested using the automatically generated API documentation at `http://127.0.0.1:8000/docs`. or [if you want to veiw it live](https://cart-service-git-cart-service.2.rahtiapp.fi/docs).
 
-### Get All Beers
-
-- **URL:** `/beers/`
-- **Method:** `GET`
-- **Description:** Retrieve a list of all available beers.
-
-### Get a Specific Beer by ID
-
-- **URL:** `/beers/{beer_id}`
-- **Method:** `GET`
-- **Description:** Retrieve details of a specific beer by its ID.
-
 ### Add Item to Cart
 
 - **URL:** `/cart/`
 - **Method:** `POST`
 - **Description:** Add an item to the user's cart.
+- **Parameters:**
+  - __user_id__(int): The ID of the user.
+  - __product_id__ (int): The ID of the product to add.
+  - __quantity__ (int, optional): The quantity of the product to add (default is 1).
+ 
+### Edit quantity of item
+- **URL:** `/cart/{user_id}/{product_id}/{quantity}`
+- **Method:** `PATCH`
+- **Description:** Update quantity for a specific item
 - **Parameters:**
   - __user_id__(int): The ID of the user.
   - __product_id__ (int): The ID of the product to add.
