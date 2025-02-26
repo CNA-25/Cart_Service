@@ -123,6 +123,6 @@ The database schema includes a single table [cart_items](./app/database.py) with
 
 - __id__ (Integer, Primary Key): The unique identifier for the cart item.
 - __user_id__ (Integer): The ID of the user associated with the cart item.
-- __product_id__ (Integer): The ID of the product associated with the cart item.
+- __product_id__ (String): The ID of the product associated with the cart item.
 - __quantity__ (Integer): The quantity of the product in the cart.
 
