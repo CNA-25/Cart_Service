@@ -1,8 +1,20 @@
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
-import requests  # For fetching product data from an external API
 from app.database import SessionLocal, CartItem
 from app.auth import verify_jwt_token  # Import the verify_jwt_token function
+
+app = FastAPI()
+
+# CORS setup - Allow from everywhere (for development or public API)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (open to everyone)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, PATCH, DELETE, etc.)
+    allow_headers=["*"],  # Allow all headers (including Authorization, Content-Type, etc.)
+)
+
 
 app = FastAPI()
 
