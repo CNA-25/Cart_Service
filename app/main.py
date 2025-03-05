@@ -16,7 +16,6 @@ app.add_middleware(
 )
 
 
-app = FastAPI()
 
 # External API URL 
 # PRODUCT_API_URL = Pruttupong's API URL
