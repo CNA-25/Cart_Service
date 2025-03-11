@@ -65,10 +65,14 @@ def add_to_cart(user_id: int, product_id: int, quantity: int = 1, db: Session = 
     return {"message": "Item added to cart", "cart_item": cart_item}
 
 # Get User's Cart 
-@app.get("/cart/{user_id}", dependencies=[Depends(verify_jwt_token)])
-def get_cart(user_id: int, db: Session = Depends(get_db)):
+@app.get("/cart", dependencies=[Depends(verify_jwt_token)])
+def get_cart(payload: dict = Depends(verify_jwt_token), db: Session = Depends(get_db)):
+    user_id = payload.get("sub")
+    if user_id is None:
+        return {"error": "User ID not found in token"}
+
     cart_items = db.query(CartItem).filter(CartItem.user_id == user_id).all()
-    
+
     if not cart_items:
         return {"message": "Cart is empty"}
 
